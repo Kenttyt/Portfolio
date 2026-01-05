@@ -232,6 +232,37 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.typing-text {
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.typing-cursor {
+    color: #ffd700;
+    font-weight: 300;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    transition: opacity 0.3s ease;
+}
+
+.typing-text {
+    transition: opacity 0.2s ease;
+}
+
+.hero-title:hover .typing-cursor {
+    animation: none;
+    opacity: 1 !important;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
 .hero-subtitle {
     font-size: 1.5rem;
     font-weight: 500;

@@ -530,6 +530,118 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
+// Typing Animation with Multiple Text Variations (Loops every 10 seconds)
+// ============================================
+function startTypingLoop(element, texts, cursorElement, typeSpeed = 150, deleteSpeed = 50, loopInterval = 10000) {
+    let currentIndex = 0;
+    let isPaused = false;
+    let timeoutId = null;
+    
+    // Pause on hover
+    const heroTitle = element.closest('.hero-title');
+    if (heroTitle) {
+        heroTitle.addEventListener('mouseenter', () => {
+            isPaused = true;
+            if (cursorElement) cursorElement.style.opacity = '1';
+        });
+        heroTitle.addEventListener('mouseleave', () => {
+            isPaused = false;
+        });
+    }
+    
+    function showCursor() {
+        if (cursorElement) {
+            cursorElement.style.display = 'inline';
+            cursorElement.style.opacity = '1';
+        }
+    }
+    
+    function hideCursor() {
+        if (cursorElement) {
+            cursorElement.style.opacity = '0';
+        }
+    }
+    
+    function typeText() {
+        if (isPaused) {
+            timeoutId = setTimeout(typeText, 100);
+            return;
+        }
+        
+        const text = texts[currentIndex];
+        let i = 0;
+        element.textContent = '';
+        showCursor();
+        
+        function type() {
+            if (isPaused) {
+                timeoutId = setTimeout(type, 100);
+                return;
+            }
+            
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                timeoutId = setTimeout(type, typeSpeed);
+            } else {
+                // After typing completes, hide cursor and wait 2 seconds, then delete
+                hideCursor();
+                timeoutId = setTimeout(() => {
+                    deleteText();
+                }, 2000);
+            }
+        }
+        
+        type();
+    }
+    
+    function deleteText() {
+        if (isPaused) {
+            timeoutId = setTimeout(deleteText, 100);
+            return;
+        }
+        
+        let currentText = element.textContent;
+        showCursor();
+        
+        function deleteChar() {
+            if (isPaused) {
+                timeoutId = setTimeout(deleteChar, 100);
+                return;
+            }
+            
+            if (currentText.length > 0) {
+                currentText = currentText.slice(0, -1);
+                element.textContent = currentText;
+                timeoutId = setTimeout(deleteChar, deleteSpeed);
+            } else {
+                // Move to next text in array
+                currentIndex = (currentIndex + 1) % texts.length;
+                hideCursor();
+                
+                // After deleting, calculate remaining time to reach 10 seconds total
+                const text = texts[currentIndex];
+                const typingTime = text.length * typeSpeed;
+                const deletingTime = element.textContent.length * deleteSpeed;
+                const waitTime = 2000;
+                const totalCycleTime = typingTime + waitTime + deletingTime;
+                const remainingTime = Math.max(500, loopInterval - totalCycleTime);
+                
+                // Wait remaining time, then start next cycle
+                timeoutId = setTimeout(() => {
+                    typeText();
+                }, remainingTime);
+            }
+        }
+        
+        deleteChar();
+    }
+    
+    // Start the first typing cycle
+    typeText();
+}
+
+// ============================================
 // Initialize on Page Load
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -541,6 +653,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetSection.scrollIntoView({ behavior: 'smooth' });
             }, 100);
         }
+    }
+    
+    // Start typing animation for name (loops every 10 seconds)
+    const typingText = document.getElementById('typing-text');
+    const typingCursor = document.querySelector('.typing-cursor');
+    if (typingText) {
+        // Wait a bit before starting the typing animation
+        setTimeout(() => {
+            startTypingLoop(typingText, ['Kent Baldo'], typingCursor, 150, 50, 10000);
+        }, 500);
     }
     
     // Animate hero elements on load
