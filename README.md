@@ -1,4 +1,4 @@
-# Kent Shesh Portfolio
+# Kenttyt Portfolio
 
 Hi! I'm **Kent**, a passionate developer exploring web development, coding projects, and technology. Welcome to my portfolio! 🚀
 
