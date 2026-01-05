@@ -7,7 +7,7 @@ Hi! I'm **Kent**, a passionate developer exploring web development, coding proje
 ## 📫 Contact Me
 
 - **Email:** baldobaldo149@gmail.com  
-- **GitHub:** (https://github.com/Kenttyt)  
+- **GitHub:** https://github.com/Kenttyt  
 
 
 ---
