@@ -205,91 +205,49 @@ filterButtons.forEach(button => {
 const projectData = {
     1: {
         title: 'E-Commerce Platform',
-        description: 'A full-featured e-commerce platform with user authentication, product management, shopping cart, payment integration, and admin dashboard. Built with modern technologies for scalability and performance.',
-        technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe API'],
-        features: [
-            'User authentication and authorization',
-            'Product catalog with search and filters',
-            'Shopping cart and checkout process',
-            'Payment integration with Stripe',
-            'Admin dashboard for product management',
-            'Order tracking and history'
-        ],
+        description: '',
+        technologies: [],
+        features: [],
         liveUrl: '#',
         githubUrl: '#'
     },
     2: {
         title: 'Analytics Dashboard',
-        description: 'A comprehensive analytics dashboard that provides real-time data visualization and reporting. Features interactive charts, customizable widgets, and export functionality.',
-        technologies: ['Vue.js', 'D3.js', 'Python', 'Flask', 'PostgreSQL'],
-        features: [
-            'Real-time data visualization',
-            'Interactive charts and graphs',
-            'Customizable dashboard widgets',
-            'Data export functionality',
-            'User role management',
-            'Scheduled reports'
-        ],
+        description: '',
+        technologies: [],
+        features: [],
         liveUrl: '#',
         githubUrl: '#'
     },
     3: {
         title: 'Task Management App',
-        description: 'A cross-platform mobile application for task management and team collaboration. Features include task assignment, progress tracking, notifications, and team chat.',
-        technologies: ['React Native', 'Firebase', 'Redux', 'Expo'],
-        features: [
-            'Task creation and assignment',
-            'Progress tracking and deadlines',
-            'Team collaboration features',
-            'Push notifications',
-            'Offline mode support',
-            'Team chat functionality'
-        ],
+        description: '',
+        technologies: [],
+        features: [],
         liveUrl: '#',
         githubUrl: '#'
     },
     4: {
         title: 'Brand Identity Design',
-        description: 'Complete brand identity package including logo design, color palette, typography, and brand guidelines. Created for a modern tech startup.',
-        technologies: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop'],
-        features: [
-            'Logo design and variations',
-            'Color palette and typography',
-            'Brand guidelines document',
-            'Social media templates',
-            'Business card design',
-            'Website mockups'
-        ],
+        description: '',
+        technologies: [],
+        features: [],
         liveUrl: '#',
         githubUrl: '#'
     },
     5: {
         title: 'Blog Platform',
-        description: 'A modern blogging platform with markdown support, SEO optimization, and content management. Features include categories, tags, comments, and author profiles.',
-        technologies: ['Next.js', 'GraphQL', 'PostgreSQL', 'Prisma'],
-        features: [
-            'Markdown editor support',
-            'SEO optimization',
-            'Category and tag system',
-            'Comment system',
-            'Author profiles',
-            'Search functionality'
-        ],
+        description: '',
+        technologies: [],
+        features: [],
         liveUrl: '#',
         githubUrl: '#'
     },
     6: {
         title: 'Cloud Storage Service',
-        description: 'A secure cloud storage and file sharing platform with end-to-end encryption. Features include file synchronization, sharing, and version control.',
-        technologies: ['AWS', 'Docker', 'TypeScript', 'Node.js', 'React'],
-        features: [
-            'File upload and storage',
-            'End-to-end encryption',
-            'File sharing with permissions',
-            'Version control',
-            'File synchronization',
-            'Mobile app support'
-        ],
+        description: '',
+        technologies: [],
+        features: [],
         liveUrl: '#',
         githubUrl: '#'
     }
