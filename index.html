@@ -15,7 +15,7 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="#home">KB</a>
+                <a href="#home">B</a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -41,6 +41,7 @@
 
     <!-- Home / Hero Section -->
     <section id="home" class="hero">
+        <canvas id="hero-canvas"></canvas>
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title fade-in">Hi, I'm <span class="highlight typing-text" id="typing-text"></span><span class="typing-cursor" style="display: none;">|</span></h1>
@@ -49,14 +50,14 @@
                 <div class="hero-buttons fade-in">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    <a href="resume.pdf" class="btn btn-outline" download>
+                    <a href="images/baldo-resume.pdf" class="btn btn-outline" download>
                         <i class="fas fa-download"></i> Download Resume
                     </a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="hero-avatar">
-                    <img src="face.png" alt="Kent Baldo" class="profile-image">
+                    <img src="images/face.jpg" alt="Kent Baldo" class="profile-image">
                 </div>
             </div>
         </div>
@@ -80,11 +81,7 @@
                         web solutions. With expertise in modern technologies, I bring ideas to life 
                         through clean code and intuitive design.
                     </p>
-                    <p>
-                        When I'm not coding, I enjoy exploring new technologies, contributing to 
-                        open-source projects, and continuously learning to stay at the forefront 
-                        of web development.
-                    </p>
+                   
                 </div>
                 <div class="about-interests slide-in-right">
                     <h3>Interests & Hobbies</h3>
@@ -93,10 +90,7 @@
                             <i class="fas fa-code"></i>
                             <span>Web Development</span>
                         </div>
-                        <div class="interest-item">
-                            <i class="fas fa-video"></i>
-                            <span>Video Editing</span>
-                        </div>
+                       
                         <div class="interest-item">
                             <i class="fas fa-music"></i>
                             <span>Music</span>
@@ -129,7 +123,7 @@
             <div class="project-filters">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="certificates">Certificates</button>
                 <button class="filter-btn" data-filter="design">Design</button>
             </div>
 
@@ -146,17 +140,15 @@
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
+                        <img src="images/chathive.png" alt="Chat Platform preview" class="project-thumb">
                     </div>
                     <div class="project-info">
-                        <h3>...</h3>
-                        <p>...</p>
+                        <h3>Chat Platform</h3>
+                        <p>Realtime chat platform with rooms.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Vite</span>
+                            <span class="tech-tag">Socket.IO</span>
                         </div>
                     </div>
                 </div>
@@ -172,43 +164,43 @@
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
+                        <img src="images/tm.png" alt="Tournament Manager Preview " class="project-thumb">
                     </div>
                     <div class="project-info">
-                        <h3>...</h3>
-                        <p>...</p>
+                        <h3>Tournament Manager</h3>
+                        <p>Manage tournament brackets in one place.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="project-card" data-category="mobile">
+                <div class="project-card" data-category="certificates">
                     <div class="project-image">
                         <div class="project-overlay">
                             <a href="#" class="project-link" data-project="3">
                                 <i class="fas fa-eye"></i> View Details
                             </a>
-                            <a href="#" class="project-github" target="_blank">
-                                <i class="fab fa-github"></i>
-                            </a>
                         </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-mobile-alt"></i>
+                        <div class="certificate-grid" aria-label="Certificates">
+                            <img src="images/network-basics.png" alt="Cisco Networking Basics certificate">
+                            <img src="images/network-defense.png" alt="Cisco Network Defense certificate">
+                            <img src="images/packet-tracer2.png" alt="Getting Started with Cisco Packet Tracer certificate">
+                            <img src="images/packtet-tracer.png" alt="Introduction to Packet Tracer certificate">
+                            <img src="images/troubleshooting.png" alt="Network Addressing and Basic Troubleshooting certificate">
+                            <img src="images/tree-planting.png" alt="Tree planting certificate">
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>...</h3>
-                        <p>...</p>
+                        <h3>Certificates</h3>
+                        <p>Networking certifications plus community and sustainability awards.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
+                            <span class="tech-tag">Cisco</span>
+                            <span class="tech-tag">Networking</span>
+                            <span class="tech-tag">Community</span>
                         </div>
                     </div>
                 </div>
@@ -224,17 +216,15 @@
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-palette"></i>
-                        </div>
+                        <img src="images/brand.png" alt="Brand Identity Design preview" class="project-thumb">
                     </div>
                     <div class="project-info">
-                        <h3>...</h3>
-                        <p>...</p>
+                        <h3>Brand Identity Design</h3>
+                        <p>Luxury brand identity system with logo, palette, typography, and mockups.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
+                            <span class="tech-tag">Branding</span>
+                            <span class="tech-tag">Mockups</span>
+                            <span class="tech-tag">Typography</span>
                         </div>
                     </div>
                 </div>
@@ -250,35 +240,7 @@
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-blog"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>...</h3>
-                        <p>...</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
-                            <span class="tech-tag">...</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 6 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" data-project="6">
-                                <i class="fas fa-eye"></i> View Details
-                            </a>
-                            <a href="#" class="project-github" target="_blank">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-cloud"></i>
-                        </div>
+                        <img src="" alt="" class="project-thumb">
                     </div>
                     <div class="project-info">
                         <h3>...</h3>
@@ -307,6 +269,15 @@
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>HTML/CSS</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JavaScript</span>
                             <span class="skill-percent">80%</span>
                         </div>
                         <div class="skill-bar">
@@ -315,20 +286,11 @@
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span>JavaScript</span>
-                            <span class="skill-percent">50%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="50"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
                             <span>React</span>
-                            <span class="skill-percent">5%</span>
+                            <span class="skill-percent">20%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="5"></div>
+                            <div class="skill-progress" data-width="20"></div>
                         </div>
                     </div>
                     <div class="skill-item">
@@ -348,28 +310,28 @@
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>Node.js</span>
-                            <span class="skill-percent">5%</span>
+                            <span class="skill-percent">40%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="5"></div>
+                            <div class="skill-progress" data-width="40"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>Python</span>
-                            <span class="skill-percent">10%</span>
+                            <span class="skill-percent">20%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="10"></div>
+                            <div class="skill-progress" data-width="20"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>PHP</span>
-                            <span class="skill-percent">10%</span>
+                            <span class="skill-percent">60%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="10"></div>
+                            <div class="skill-progress" data-width="60"></div>
                         </div>
                     </div>
                     <div class="skill-item">
@@ -397,11 +359,11 @@
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span>PostgreSQL</span>
-                            <span class="skill-percent">0%</span>
+                            <span>MySQL</span>
+                            <span class="skill-percent">60%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="0"></div>
+                            <div class="skill-progress" data-width="60"></div>
                         </div>
                     </div>
                     <div class="skill-item">

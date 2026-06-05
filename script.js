@@ -204,28 +204,54 @@ filterButtons.forEach(button => {
 // Project data (you can expand this with real project details)
 const projectData = {
     1: {
-        title: 'E-Commerce Platform',
+        title: 'Chat Platform',
         description: '',
         technologies: [],
         features: [],
-        liveUrl: '#',
+        liveUrl: 'https://chathive-web.vercel.app/',
         githubUrl: '#'
     },
     2: {
-        title: 'Analytics Dashboard',
+        title: 'Tournament Manager',
         description: '',
         technologies: [],
         features: [],
-        liveUrl: '#',
+        liveUrl: 'https://tournamentmanager.free.nf/',
         githubUrl: '#'
     },
     3: {
-        title: 'Task Management App',
-        description: '',
+        title: 'Certificates',
+        description: 'Cisco Networking Academy certificates and course completions.',
         technologies: [],
         features: [],
-        liveUrl: '#',
-        githubUrl: '#'
+        certificates: [
+            {
+                src: 'images/network-basics.png',
+                alt: 'Cisco Networking Basics certificate'
+            },
+            {
+                src: 'images/network-defense.png',
+                alt: 'Cisco Network Defense certificate'
+            },
+            {
+                src: 'images/packet-tracer2.png',
+                alt: 'Getting Started with Cisco Packet Tracer certificate'
+            },
+            {
+                src: 'images/packtet-tracer.png',
+                alt: 'Introduction to Packet Tracer certificate'
+            },
+            {
+                src: 'images/troubleshooting.png',
+                alt: 'Network Addressing and Basic Troubleshooting certificate'
+            },
+            {
+                src: 'images/tree-planting.png',
+                alt: 'Tree planting certificate'
+            }
+        ],
+        liveUrl: '',
+        githubUrl: ''
     },
     4: {
         title: 'Brand Identity Design',
@@ -236,19 +262,11 @@ const projectData = {
         githubUrl: '#'
     },
     5: {
-        title: 'Blog Platform',
+        title: '',
         description: '',
         technologies: [],
         features: [],
-        liveUrl: '#',
-        githubUrl: '#'
-    },
-    6: {
-        title: 'Cloud Storage Service',
-        description: '',
-        technologies: [],
-        features: [],
-        liveUrl: '#',
+        liveUrl: '',
         githubUrl: '#'
     }
 };
@@ -269,30 +287,72 @@ projectLinks.forEach(link => {
 // Display project details in modal
 function displayProjectModal(project) {
     const modalBody = document.getElementById('modal-body');
-    
-    modalBody.innerHTML = `
-        <h2>${project.title}</h2>
-        <p class="modal-description">${project.description}</p>
-        
-        <h3>Technologies Used</h3>
-        <div class="project-tech">
-            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-        </div>
-        
-        <h3>Key Features</h3>
-        <ul class="modal-features">
-            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-        </ul>
-        
-        <div class="modal-actions">
+
+    const sections = [];
+    sections.push(`<h2>${project.title}</h2>`);
+
+    if (project.description) {
+        sections.push(`<p class="modal-description">${project.description}</p>`);
+    }
+
+    if (project.technologies && project.technologies.length) {
+        sections.push(`
+            <h3>Technologies Used</h3>
+            <div class="project-tech">
+                ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+            </div>
+        `);
+    }
+
+    if (project.certificates && project.certificates.length) {
+        sections.push(`
+            <div class="modal-certificates" aria-label="Certificates">
+                ${project.certificates.map(cert => `
+                    <figure class="modal-certificate">
+                        <img src="${cert.src}" alt="${cert.alt}" loading="lazy">
+                        <figcaption>${cert.alt}</figcaption>
+                    </figure>
+                `).join('')}
+            </div>
+        `);
+    }
+
+    if (project.features && project.features.length) {
+        sections.push(`
+            <h3>Key Features</h3>
+            <ul class="modal-features">
+                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+        `);
+    }
+
+    const actions = [];
+
+    if (project.liveUrl && project.liveUrl !== '#') {
+        actions.push(`
             <a href="${project.liveUrl}" class="btn btn-primary" target="_blank">
                 <i class="fas fa-external-link-alt"></i> Live Demo
             </a>
+        `);
+    }
+
+    if (project.githubUrl && project.githubUrl !== '#') {
+        actions.push(`
             <a href="${project.githubUrl}" class="btn btn-secondary" target="_blank">
                 <i class="fab fa-github"></i> View Code
             </a>
-        </div>
-    `;
+        `);
+    }
+
+    if (actions.length) {
+        sections.push(`
+            <div class="modal-actions">
+                ${actions.join('')}
+            </div>
+        `);
+    }
+
+    modalBody.innerHTML = sections.join('');
     
     projectModal.classList.add('active');
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -655,3 +715,236 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// ============================================
+// Resume PDF Download Functionality
+// ============================================
+function downloadResume() {
+    const resumeContent = document.getElementById('resume-content');
+    const element = resumeContent.cloneNode(true);
+    
+    // Remove any interactive elements that shouldn't be in the PDF
+    const buttons = element.querySelectorAll('button');
+    buttons.forEach(btn => btn.remove());
+    
+    const opt = {
+        margin: 10,
+        filename: 'Kent_Baldo_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+    };
+    
+    html2pdf().set(opt).from(element).save().catch(err => {
+        console.error('Error generating PDF:', err);
+        alert('Error generating PDF. Please try again.');
+    });
+}
+
+// Attach download event listeners to both resume buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const downloadBtn1 = document.getElementById('download-resume-btn');
+    const downloadBtn2 = document.getElementById('download-resume-btn-2');
+    
+    if (downloadBtn1) {
+        downloadBtn1.addEventListener('click', downloadResume);
+    }
+    
+    if (downloadBtn2) {
+        downloadBtn2.addEventListener('click', downloadResume);
+    }
+});
+
+// ============================================
+// Shooting Stars & Starfield Canvas Animation
+// ============================================
+(function () {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let stars = [];
+    let shootingStars = [];
+    let animationId;
+
+    // Resize canvas to match hero section
+    function resize() {
+        const hero = canvas.parentElement;
+        width = canvas.width = hero.offsetWidth;
+        height = canvas.height = hero.offsetHeight;
+    }
+
+    // ---- Static twinkling stars ----
+    function createStars(count) {
+        stars = [];
+        for (let i = 0; i < count; i++) {
+            stars.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 1.5 + 0.3,
+                baseAlpha: Math.random() * 0.6 + 0.2,
+                alpha: 0,
+                twinkleSpeed: Math.random() * 0.02 + 0.005,
+                twinkleOffset: Math.random() * Math.PI * 2
+            });
+        }
+    }
+
+    function drawStars(time) {
+        stars.forEach(s => {
+            s.alpha = s.baseAlpha + Math.sin(time * s.twinkleSpeed + s.twinkleOffset) * 0.3;
+            s.alpha = Math.max(0, Math.min(1, s.alpha));
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255, ' + s.alpha + ')';
+            ctx.fill();
+        });
+    }
+
+    // ---- Shooting stars ----
+    class ShootingStar {
+        constructor() {
+            this.reset();
+        }
+
+        reset() {
+            // Spawn from top or right edge, travel diagonally
+            const side = Math.random();
+            if (side < 0.7) {
+                // From top
+                this.x = Math.random() * width * 1.2;
+                this.y = -10;
+            } else {
+                // From right
+                this.x = width + 10;
+                this.y = Math.random() * height * 0.4;
+            }
+
+            const angle = (Math.random() * 30 + 200) * (Math.PI / 180);
+            const speed = Math.random() * 6 + 8;
+            this.vx = Math.cos(angle) * speed;
+            this.vy = -Math.sin(angle) * speed;
+
+            this.tailLength = Math.random() * 60 + 50;
+            this.life = 1.0;
+            this.decay = Math.random() * 0.008 + 0.006;
+            this.thickness = Math.random() * 1.5 + 0.8;
+            this.active = true;
+
+            // Slight color variation: white, pale blue, or pale gold
+            const colors = [
+                [255, 255, 255],
+                [200, 220, 255],
+                [255, 245, 200],
+                [180, 210, 255]
+            ];
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            this.life -= this.decay;
+            if (this.life <= 0 || this.x < -100 || this.x > width + 100 || this.y > height + 100) {
+                this.active = false;
+            }
+        }
+
+        draw() {
+            if (!this.active) return;
+            const mag = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+            const tailX = this.x - this.vx * (this.tailLength / mag);
+            const tailY = this.y - this.vy * (this.tailLength / mag);
+
+            const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
+            const r = this.color[0], g = this.color[1], b = this.color[2];
+            gradient.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (this.life * 0.9) + ')');
+            gradient.addColorStop(0.3, 'rgba(' + r + ',' + g + ',' + b + ',' + (this.life * 0.4) + ')');
+            gradient.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
+
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(tailX, tailY);
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = this.thickness;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            // Glow at the head
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.thickness + 1, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + (this.life * 0.7) + ')';
+            ctx.fill();
+        }
+    }
+
+    // Spawn shooting stars at random intervals
+    let lastSpawn = 0;
+    let nextSpawnDelay = Math.random() * 1500 + 400;
+
+    function maybeSpawnShootingStar(time) {
+        if (time - lastSpawn > nextSpawnDelay) {
+            shootingStars.push(new ShootingStar());
+            lastSpawn = time;
+            nextSpawnDelay = Math.random() * 2000 + 600;
+
+            // Occasionally spawn a burst of 2-3
+            if (Math.random() < 0.2) {
+                setTimeout(function () { shootingStars.push(new ShootingStar()); }, 100 + Math.random() * 200);
+                if (Math.random() < 0.4) {
+                    setTimeout(function () { shootingStars.push(new ShootingStar()); }, 250 + Math.random() * 300);
+                }
+            }
+        }
+    }
+
+    // ---- Animation loop ----
+    let isVisible = true;
+
+    function animate(time) {
+        if (!isVisible) {
+            animationId = requestAnimationFrame(animate);
+            return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw twinkling stars
+        drawStars(time);
+
+        // Spawn and update shooting stars
+        maybeSpawnShootingStar(time);
+
+        shootingStars.forEach(function (s) {
+            s.update();
+            s.draw();
+        });
+
+        // Clean up dead shooting stars
+        shootingStars = shootingStars.filter(function (s) { return s.active; });
+
+        animationId = requestAnimationFrame(animate);
+    }
+
+    // Pause when hero is off-screen
+    const heroObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            isVisible = entry.isIntersecting;
+        });
+    }, { threshold: 0 });
+
+    heroObserver.observe(canvas.parentElement);
+
+    // Handle resize
+    window.addEventListener('resize', function () {
+        resize();
+        createStars(Math.floor(width * height / 4000));
+    });
+
+    // Init
+    resize();
+    createStars(Math.floor(width * height / 4000));
+    animationId = requestAnimationFrame(animate);
+})();
+
