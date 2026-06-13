@@ -437,21 +437,33 @@ contactForm.addEventListener('submit', (e) => {
         isValid = false;
     }
     
-    // If form is valid, submit it (you can integrate with a backend here)
+    // If form is valid, submit to n8n webhook
     if (isValid) {
-        // Simulate form submission
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.innerHTML;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitButton.disabled = true;
-        
-        // Simulate API call (replace with actual form submission)
-        setTimeout(() => {
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-        }, 1500);
+
+        fetch('https://kenttyt.app.n8n.cloud/webhook-test/contact-form', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, subject, message })
+        })
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(() => {
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            })
+            .catch(() => {
+                alert('Something went wrong. Please try again later.');
+            })
+            .finally(() => {
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            });
     }
 });
 
