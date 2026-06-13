@@ -444,7 +444,7 @@ contactForm.addEventListener('submit', (e) => {
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitButton.disabled = true;
 
-        fetch('https://kenttyt.app.n8n.cloud/webhook-test/contact-form', {
+        fetch('https://kenttyt.app.n8n.cloud/webhook/contact-form', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, subject, message })
