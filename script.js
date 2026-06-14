@@ -838,10 +838,10 @@ document.addEventListener('DOMContentLoaded', () => {
             this.vx = Math.cos(angle) * speed;
             this.vy = -Math.sin(angle) * speed;
 
-            this.tailLength = Math.random() * 60 + 50;
+            this.tailLength = Math.random() * 100 + 90;
             this.life = 1.0;
-            this.decay = Math.random() * 0.008 + 0.006;
-            this.thickness = Math.random() * 1.5 + 0.8;
+            this.decay = Math.random() * 0.006 + 0.004;
+            this.thickness = Math.random() * 2.5 + 1.5;
             this.active = true;
 
             // Slight color variation: white, pale blue, or pale gold
@@ -885,8 +885,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Glow at the head
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.thickness + 1, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + (this.life * 0.7) + ')';
+            ctx.arc(this.x, this.y, this.thickness + 3, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + (this.life * 0.5) + ')';
+            ctx.fill();
+
+            // Outer glow
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.thickness + 8, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + (this.life * 0.2) + ')';
             ctx.fill();
         }
     }
