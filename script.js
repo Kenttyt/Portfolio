@@ -205,23 +205,23 @@ filterButtons.forEach(button => {
 const projectData = {
     1: {
         title: 'Chat Platform',
-        description: '',
-        technologies: [],
-        features: [],
+        description: 'A real-time chat application that allows users to create and join chat rooms for seamless communication.',
+        technologies: ['React', 'Vite', 'Socket.IO'],
+        features: ['Real-time messaging', 'Multiple chat rooms', 'User authentication', 'Responsive design'],
         liveUrl: 'https://chathive-web.vercel.app/',
         githubUrl: '#'
     },
     2: {
         title: 'Tournament Manager',
-        description: '',
-        technologies: [],
-        features: [],
+        description: 'A web-based tool for organizing and managing tournament brackets, scores, and schedules in one place.',
+        technologies: ['JavaScript', 'PHP', 'MySQL'],
+        features: ['Bracket generation', 'Score tracking', 'Team management', 'Match scheduling'],
         liveUrl: 'https://tournamentmanager.free.nf/',
         githubUrl: '#'
     },
     3: {
         title: 'Certificates',
-        description: 'Cisco Networking Academy certificates and course completions.',
+        description: 'A collection of networking certifications and course completions from Cisco Networking Academy.',
         technologies: [],
         features: [],
         certificates: [
@@ -248,25 +248,33 @@ const projectData = {
             {
                 src: 'images/tree-planting.png',
                 alt: 'Tree planting certificate'
+            },
+             {
+                src: 'images/exhibit.png',
+                alt: 'Exhibit certificate'
             }
+
+
+
+
         ],
         liveUrl: '',
         githubUrl: ''
     },
     4: {
         title: 'Brand Identity Design',
-        description: '',
-        technologies: [],
-        features: [],
+        description: 'A luxury brand identity system including logo design, color palette, typography, and product mockups.',
+        technologies: ['Branding', 'Mockups', 'Typography'],
+        features: ['Logo design', 'Color palette', 'Typography system', 'Product mockups'],
         liveUrl: 'https://brand-design-test.vercel.app/',
         githubUrl: '#'
     },
     5: {
-        title: '',
-        description: '',
-        technologies: [],
-        features: [],
-        liveUrl: '',
+        title: 'Capstone Project',
+        description: 'A senior citizen management system with QR attendance, profile management, sentiment analysis, and SMS reminders.',
+        technologies: ['PHP', 'SQL', 'JavaScript', 'DistilBERT', 'Semaphore'],
+        features: ['QR-Based Attendance', 'Profile Management', 'Sentiment Analysis', 'SMS Event Reminders'],
+        liveUrl: 'http://kinamayansenior.me',
         githubUrl: '#'
     }
 };
