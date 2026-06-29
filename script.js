@@ -212,11 +212,11 @@ const projectData = {
         githubUrl: '#'
     },
     2: {
-        title: 'Tournament Manager',
+        title: 'TournamentHQ',
         description: 'A web-based tool for organizing and managing tournament brackets, scores, and schedules in one place.',
         technologies: ['JavaScript', 'PHP', 'MySQL'],
         features: ['Bracket generation', 'Score tracking', 'Team management', 'Match scheduling'],
-        liveUrl: 'https://tournamentmanager.free.nf/',
+        liveUrl: 'https://tournamenthq.free.nf/',
         githubUrl: '#'
     },
     3: {
